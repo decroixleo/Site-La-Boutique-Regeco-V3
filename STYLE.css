@@ -620,14 +620,14 @@ footer {
     align-items: center;
   }
 
-  /* Cacher les liens Réparation, À propos et Contact sur mobile portrait */
+  /* Cacher les liens inutiles sur mobile portrait */
   nav ul li:nth-child(2),
   nav ul li:nth-child(3),
   nav ul li:nth-child(6) {
     display: none !important;
   }
 
-  /* Style des 3 liens conservés (Services, Nous trouver, Devis) */
+  /* Style des 3 boutons conservés (Services, Nous trouver, Devis) */
   nav a {
     font-size: 0.75rem !important;
     padding: 0.2rem 0.3rem !important;
@@ -639,7 +639,23 @@ footer {
     border-radius: 6px;
   }
 
-  /* Ajustements du Hero */
+  /* ─── VALEURS / AVANTAGES SUR MOBILE ─── */
+  .about-values {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .about-values .about-item {
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  /* Ajustements Hero & grilles */
   #hero {
     padding-top: 7rem;
     padding-bottom: 3rem;
