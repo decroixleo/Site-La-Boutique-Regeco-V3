@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="LOGO.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nous Trouver – La Boutique Regeco</title>
+  <link rel="stylesheet" href="STYLE.css"/>
+  <style>
+    /* ─── PAGE LOCALISATION ─── */
+    .location-hero {
+      min-height: 40vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10rem 5% 4rem;
+    }
+    
+    .location-hero .hero-eyebrow {
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+    
+    .location-hero .section-title {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+    
+    .location-hero .section-desc {
+      max-width: 540px;
+      margin: 1rem auto 0;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
+
+    /* ─── LAYOUT ─── */
+    .location-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5% 6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── INFO CARD ─── */
+    .info-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 255, 65, 0.15);
+      border-radius: 16px;
+      padding: 2.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+      backdrop-filter: blur(8px);
+    }
+    
+    .info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    
+    .info-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+    
+    .info-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    
+    .info-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .horaires-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    .horaire-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.08);
+    }
+    
+    .horaire-row:last-child {
+      border-bottom: none;
+    }
+    
+    .horaire-row .jour {
+      color: var(--text);
+      font-weight: 500;
+    }
+    
+    .horaire-row .heure {
+      color: var(--cyan);
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .horaire-row.ferme .heure {
+      color: #ff4444;
+    }
+
+    .btn-itineraire {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #000;
+      font-weight: 700;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 9px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 0.5rem;
+    }
+    
+    .btn-itineraire:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 255, 65, 0.45);
+    }
+
+    /* ─── MAP ─── */
+    .map-container {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 65, 0.18);
+      min-height: 520px;
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+      box-shadow: 0 0 50px rgba(0, 255, 65, 0.08);
+      backdrop-filter: blur(5px);
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      display: block;
+      border: none;
+      filter: invert(90%) hue-rotate(120deg) saturate(0.7) brightness(0.85);
+    }
+
+    @media (max-width: 968px) {
+      .location-wrapper {
+        grid-template-columns: 1fr;
+      }
+      
+      .map-container {
+        min-height: 380px;
+      }
+      
+      .map-container iframe {
+        min-height: 380px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .info-card {
+        padding: 2rem;
+      }
+      
+      .map-container {
+        min-height: 320px;
+      }
+      
+      .map-container iframe {
+        min-height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CANVAS GRID -->
+<canvas id="grid-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a class="logo-img" href="PAGE.html">
+    <img src="LOGO.png" alt="La Boutique Regeco" style="height: 70px; width: auto;" />
+  </a>
+  <ul>
+    <li><a href="PAGE.html#services">Services</a></li>
+    <li><a href="PAGE.html#stats">Réparation</a></li>
+    <li><a href="PAGE.html#about">À propos</a></li>
+    <li><a href="LOCALISATION.html" style="color: var(--cyan);">Nous trouver</a></li>
+    <li><a class="nav-devis" href="DEVIS.html">Devis gratuit</a></li>
+    <li><a class="nav-cta" href="PAGE.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="location-hero">
+  <p class="hero-eyebrow">📍 Localisation</p>
+  <h1 class="section-title">Nous <span style="color: var(--cyan);">trouver</span></h1>
+  <p class="section-desc">
+    Venez nous rendre visite directement en boutique à Saint-Lô.
+  </p>
+</div>
+
+<!-- CONTENU -->
+<div class="location-wrapper">
+
+  <!-- INFOS -->
+  <div class="info-card">
+
+    <div class="info-block">
+      <span class="info-label">Adresse</span>
+      <span class="info-value">46 rue de la Marne<br/>50000 Saint-Lô</span>
+      <span class="info-sub">Normandie, France</span>
+    </div>
+
+    <div class="info-block">
+      <span class="info-label">Horaires d'ouverture</span>
+      <div class="horaires-grid">
+        <div class="horaire-row">
+          <span class="jour">Lundi</span>
+          <span class="heure">08h30 – 19h00</span>
+        </div>
+        <div class="horaire-row">
+          <span class="jour">Mardi</span>
+          <span class="heure">08h30 – 19h00</span>
+        </div>
+        <div class="horaire-row">
+          <span class="jour">Mercredi</span>
+          <span class="heure">08h30 – 19h00</span>
+        </div>
+        <div class="horaire-row">
+          <span class="jour">Jeudi</span>
+          <span class="heure">08h30 – 19h00</span>
+        </div>
+        <div class="horaire-row">
+          <span class="jour">Vendredi</span>
+          <span class="heure">08h30 – 19h00</span>
+        </div>
+        <div class="horaire-row">
+          <span class="jour">Samedi</span>
+          <span class="heure">09h00 – 18h00</span>
+        </div>
+        <div class="horaire-row ferme">
+          <span class="jour">Dimanche</span>
+          <span class="heure">Fermé</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <span class="info-label">Contact rapide</span>
+      <span class="info-value">📞 02 33 06 37 47</span>
+      <span class="info-sub"><a href="mailto:laboutique@regeco.fr" style="color: var(--muted); text-decoration: none;">laboutique@regeco.fr</a></span>
+    </div>
+
+    <a class="btn-itineraire" href="https://www.google.com/maps/dir/?api=1&destination=46+rue+de+la+Marne,+50000+Saint-Lô" target="_blank">
+      🧭 Obtenir l'itinéraire
+    </a>
+
+  </div>
+
+  <!-- CARTE -->
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626!2d-1.0884!3d49.1163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480eed3e2b0b0001%3A0x1!2s46+Rue+de+la+Marne%2C+50000+Saint-L%C3%B4!5e0!3m2!1sfr!2sfr!4v1700000000000"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo-img" href="PAGE.html">
+    <img src="LOGO.png" alt="La Boutique Regeco" style="height: 70px; width: auto;" />
+  </a>
+  <div class="footer-links">
+    <a href="PAGE.html#services">Services</a>
+    <a href="PAGE.html#about">À propos</a>
+    <a href="PAGE.html#contact">Contact</a>
+    <a href="LOCALISATION.html">Nous trouver</a>
+    <a href="MENTIONS.html">Mentions légales</a>
+  </div>
+  <span class="footer-copy">© 2025 La Boutique Regeco. Tous droits réservés.</span>
+</footer>
+
+<script src="SCRIPT.js"></script>
+</body>
+</html>

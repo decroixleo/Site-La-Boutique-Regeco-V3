@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>La Boutique Regeco – Informatique</title>
+  <link rel="stylesheet" href="STYLE.css"/>
+  <style>
+    /* ─── BANNIÈRE DÉLAI / DEVIS ─── */
+    .devis-banner {
+      text-align: center;
+      padding: 3.5rem 2rem;
+    }
+
+    .devis-banner-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .devis-banner-desc {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      font-weight: 500;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ─── LIEN MENU ACTIF EN VERT ─── */
+    nav ul li a.active-link {
+      color: var(--cyan) !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- CANVAS GRID (optionnel) -->
+<canvas id="grid-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a class="logo-img" href="#hero">
+    <img src="LOGO.png" alt="La Boutique Regeco" style="height: 70px; width: auto;" />
+  </a>
+  <ul>
+    <li><a href="SERVICES.html">Services</a></li>
+    <li><a href="#reparation">Réparation</a></li>
+    <li><a href="#about-section">À propos</a></li>
+    <li><a href="LOCALISATION.html">Nous trouver</a></li>
+    <li><a class="nav-devis" href="DEVIS.html">Devis gratuit</a></li>
+    <li><a class="nav-cta" href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">Informatique & Solutions Numériques</p>
+  <h1 class="hero-title">
+    La Boutique<br><span class="accent">Regeco</span>
+  </h1>
+  <p class="hero-sub">
+    Votre partenaire technologique local. Réparation, vente de cartouches d'encre et toners, réseau et cybersécurité — des solutions rapides pour particuliers et professionnels.
+  </p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="SERVICES.html">Nos services</a>
+    <a class="btn-secondary" href="#contact">Prendre contact</a>
+  </div>
+  <div class="hero-badges">
+    <span class="badge">Assistance rapide</span>
+    <span class="badge">Devis gratuit</span>
+    <span class="badge">Matériel certifié</span>
+    <span class="badge">Support 6j/7</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <p class="section-label">Ce que nous proposons</p>
+    <h2 class="section-title">Nos expertises</h2>
+    <p class="section-desc">De la réparation urgente à l'infrastructure réseau complète, nous couvrons tous vos besoins informatiques.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🔧</div>
+      <h3>Réparation & Maintenance</h3>
+      <p>PC, Mac, smartphones et tablettes. Diagnostic express, remplacement de composants, récupération de données.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🖥️</div>
+      <h3>Vente de Matériel</h3>
+      <p>Ordinateurs, périphériques, accessoires neufs et reconditionnés. Conseil personnalisé pour chaque besoin.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🌐</div>
+      <h3>Réseau & Connectivité</h3>
+      <p>Installation d'imprimantes en Wi-Fi ou USB, configuration de routeurs ou encore de serveurs NAS pour particuliers et PME.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🛡️</div>
+      <h3>Cybersécurité</h3>
+      <p>Protection antivirus, sauvegardes cloud et sensibilisation de vos équipes.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">☁️</div>
+      <h3>Solutions Cloud</h3>
+      <p>Migration vers le cloud, gestion de serveurs distants et synchronisation multi-appareils.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🎓</div>
+      <h3>Formation & Assistance</h3>
+      <p>Cours particuliers, accompagnement sur site et support à distance pour maîtriser vos outils numériques.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENCADRÉ ENGAGEMENT -->
+<section id="reparation">
+  <div id="stats" class="devis-banner reveal">
+    <h2 class="devis-banner-title">Besoin d'une réparation ?</h2>
+    <p class="devis-banner-desc">
+      Devis <span style="color: var(--cyan); font-weight: 700;">GRATUIT</span> sous en moyenne <span style="color: var(--cyan); font-weight: 700;">24/48h</span>
+    </p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about-section" style="padding: 6rem 5%; position: relative; z-index: 1; max-width: 1400px; margin: 0 auto;">
+  <div style="text-align: center; margin-bottom: 3rem;">
+    <p class="section-label" style="opacity:1; animation: fadeUp 0.8s forwards;">Qui sommes-nous</p>
+    <h2 class="section-title" id="about" style="opacity:1; max-width: 700px; margin: 0 auto 1.2rem;">Une boutique <span style="color: var(--cyan);">au cœur de Saint-Lô</span></h2>
+    <p class="section-desc" style="opacity:1; margin: 0 auto;">
+      La Boutique Regeco est née d'une conviction simple : l'informatique doit être accessible à tous. Depuis nos débuts, nous accompagnons particuliers et entreprises avec des solutions fiables, rapides et au juste prix.
+    </p>
+  </div>
+
+  <!-- GALERIE PHOTOS 2x2 -->
+  <div class="about-gallery">
+    <div class="gallery-cell reveal">
+      <img src="IMAGE-2.jpg" alt="Ordinateurs portables en boutique" />
+      <div class="gallery-overlay"><span>Ordinateurs portables</span></div>
+    </div>
+    <div class="gallery-cell reveal">
+      <img src="IMAGE-4.jpg" alt="Rayon cartouches d'encre" />
+      <div class="gallery-overlay"><span>Cartouches & toners</span></div>
+    </div>
+    <div class="gallery-cell reveal">
+      <img src="IMAGE-3.jpg" alt="Rayon écrans et PC" />
+      <div class="gallery-overlay"><span>Écrans & PC fixes</span></div>
+    </div>
+    <div class="gallery-cell reveal">
+      <img src="IMAGE-1.jpg" alt="Rayon imprimantes" />
+      <div class="gallery-overlay"><span>Imprimantes</span></div>
+    </div>
+  </div>
+
+  <!-- VALEURS -->
+  <div class="about-values reveal">
+    <div class="about-item">Techniciens certifiés et formés en continu</div>
+    <div class="about-item">Boutique physique + interventions à domicile</div>
+    <div class="about-item">Pièces détachées authentiques et garanties</div>
+    <div class="about-item">Devis transparent et sans surprise</div>
+    <div class="about-item">Engagés pour un numérique responsable</div>
+  </div>
+</section>
+
+<style>
+  /* ─── GALERIE ABOUT 2x2 ─── */
+  .about-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 280px 280px;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-cell {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 255, 65, 0.15);
+    cursor: pointer;
+  }
+
+  .gallery-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-cell:hover img {
+    transform: scale(1.06);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-cell:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-overlay span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── VALEURS ─── */
+  .about-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .about-values .about-item {
+    background: rgba(0, 255, 65, 0.04);
+    border: 1px solid rgba(0, 255, 65, 0.15);
+    border-radius: 8px;
+    padding: 0.8rem 1.4rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    padding-left: 2.2rem;
+  }
+
+  .about-values .about-item::before {
+    content: '✓';
+    position: absolute;
+    left: 0.9rem;
+    color: var(--cyan);
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .about-gallery {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 200px 200px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .about-gallery {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 220px);
+    }
+  }
+</style>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label">Parlons-en</p>
+    <h2 class="section-title reveal">Contactez-nous</h2>
+    <p class="section-desc reveal">Un projet, une panne, une question ? Notre équipe vous répond au plus vite.</p>
+    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Nom complet</label>
+          <input type="text" id="name" name="name" placeholder="Jean Dupont" required />
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="jean@exemple.com" required />
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="service">Service concerné</label>
+        <select id="service" name="service">
+          <option value="">Sélectionnez un service</option>
+          <option>Réparation & Maintenance</option>
+          <option>Vente de Matériel</option>
+          <option>Réseau & Connectivité</option>
+          <option>Cybersécurité</option>
+          <option>Solutions Cloud</option>
+          <option>Formation & Assistance</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="msg">Message</label>
+        <textarea id="msg" name="msg" placeholder="Décrivez votre besoin..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Envoyer le message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo-img" href="#hero">
+    <img src="LOGO.png" alt="La Boutique Regeco" style="height: 70px; width: auto;" />
+  </a>
+  <div class="footer-links">
+    <a href="SERVICES.html">Services</a>
+    <a href="#about-section">À propos</a>
+    <a href="#contact">Contact</a>
+    <a href="MENTIONS.html">Mentions légales</a>
+  </div>
+  <span class="footer-copy">© 2025 La Boutique Regeco. Tous droits réservés.</span>
+</footer>
+
+<script src="SCRIPT.js"></script>
+<script>
+  /* ─── SCROLLSPY : Mettre le lien du menu en vert au défilement ─── */
+  const navLinks = document.querySelectorAll('nav ul li a[href^="#"]');
+  const sections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+  window.addEventListener('scroll', () => {
+    let currentSection = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 150;
+      if (window.scrollY >= sectionTop) {
+        currentSection = '#' + section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentSection) {
+        link.classList.add('active-link');
+      } else {
+        link.classList.remove('active-link');
+      }
+    });
+  });
+</script>
+</body>
+</html>

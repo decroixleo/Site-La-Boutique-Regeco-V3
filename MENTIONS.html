@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="LOGO.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentions Légales & RGPD – La Boutique Regeco</title>
+  <link rel="stylesheet" href="STYLE.css"/>
+  <style>
+    /* ─── HERO MENTIONS ─── */
+    .legal-hero {
+      min-height: 35vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10rem 5% 3rem;
+    }
+    
+    .legal-hero .section-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+    
+    .legal-hero .hero-eyebrow {
+      animation: fadeUp 0.8s 0.1s forwards;
+    }
+
+    .legal-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 5% 6rem;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ─── TABS ─── */
+    .tabs {
+      display: flex;
+      gap: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+      flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+      background: transparent;
+      border: 2px solid rgba(0, 255, 65, 0.2);
+      color: var(--muted);
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+    
+    .tab-btn.active {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(0, 255, 65, 0.08);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
+    }
+    
+    .tab-btn:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(0, 255, 65, 0.04);
+    }
+
+    /* ─── CONTENT ─── */
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .legal-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 255, 65, 0.12);
+      border-radius: 14px;
+      padding: 2.2rem 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s forwards;
+      backdrop-filter: blur(5px);
+    }
+    
+    .legal-card:nth-child(1) { animation-delay: 0.6s; }
+    .legal-card:nth-child(2) { animation-delay: 0.7s; }
+    .legal-card:nth-child(3) { animation-delay: 0.8s; }
+    .legal-card:nth-child(4) { animation-delay: 0.9s; }
+    .legal-card:nth-child(5) { animation-delay: 1.0s; }
+
+    .legal-card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.12);
+    }
+    
+    .legal-card p,
+    .legal-card li {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 0.8rem;
+    }
+    
+    .legal-card ul {
+      padding-left: 0;
+      margin-top: 0.8rem;
+    }
+    
+    .legal-card li {
+      list-style: none;
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    
+    .legal-card li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+    
+    .legal-card strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    
+    .update-date {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: right;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+    
+    @media (max-width: 768px) {
+      .legal-card {
+        padding: 1.8rem 2rem;
+      }
+      
+      .tabs {
+        gap: 0.8rem;
+      }
+      
+      .tab-btn {
+        padding: 0.65rem 1.5rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CANVAS GRID -->
+<canvas id="grid-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a class="logo-img" href="PAGE.html">
+    <img src="LOGO.png" alt="La Boutique Regeco" style="height: 70px; width: auto;" />
+  </a>
+  <ul>
+    <li><a href="PAGE.html#services">Services</a></li>
+    <li><a href="PAGE.html#stats">Réparation</a></li>
+    <li><a href="PAGE.html#about">À propos</a></li>
+    <li><a href="LOCALISATION.html">Nous trouver</a></li>
+    <li><a class="nav-devis" href="DEVIS.html">Devis gratuit</a></li>
+    <li><a class="nav-cta" href="PAGE.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="legal-hero">
+  <p class="hero-eyebrow">⚖️ Informations légales</p>
+  <h1 class="section-title">Mentions Légales <span style="color: var(--cyan);">&</span> RGPD</h1>
+</div>
+
+<!-- CONTENU -->
+<div class="legal-wrapper">
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('mentions')">Mentions légales</button>
+    <button class="tab-btn" onclick="showTab('rgpd')">RGPD & Vie privée</button>
+  </div>
+
+  <!-- ── MENTIONS LÉGALES ── -->
+  <div class="tab-content active" id="mentions">
+
+    <div class="legal-card">
+      <h2>Éditeur du site</h2>
+      <p><strong>Raison sociale :</strong> La Boutique Regeco</p>
+      <p><strong>Forme juridique :</strong> SARL</p>
+      <p><strong>Gérant :</strong> DELAROQUE Fabien</p>
+      <p><strong>Adresse :</strong> 46 rue de la Marne, 50000 Saint-Lô</p>
+      <p><strong>Téléphone :</strong> 02 33 06 37 47</p>
+      <p><strong>Email :</strong> <a href="mailto:laboutique@regeco.fr" style="color: var(--text);">laboutique@regeco.fr</a></p>
+      <p><strong>SIRET :</strong> 909 118 762 00014</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Hébergement</h2>
+      <p><strong>Hébergeur :</strong> OVH SAS</p>
+      <p><strong>Adresse hébergeur :</strong> 2 rue Kellermann, 59100 Roubaix, France</p>
+      <p><strong>Site :</strong> <a href="https://www.ovhcloud.com" target="_blank" style="color: var(--cyan);">www.ovhcloud.com</a></p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Propriété intellectuelle</h2>
+      <p>L'ensemble du contenu de ce site (textes, images, logos, graphismes) est la propriété exclusive de <strong>La Boutique Regeco</strong> et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+      <p>Toute reproduction, distribution ou utilisation sans autorisation préalable est strictly interdite.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Responsabilité</h2>
+      <p>La Boutique Regeco s'efforce d'assurer l'exactitude des informations diffusées sur ce site. Toutefois, elle ne peut garantir l'exhaustivité et l'absence d'erreur des informations publiées et décline toute responsabilité pour tout dommage résultant de l'utilisation du site.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Droit applicable</h2>
+      <p>Le présent site est soumis au droit français. Tout litige relatif à son utilisation sera soumis à la compétence exclusive des tribunaux français.</p>
+      <p class="update-date">Dernière mise à jour : Février 2025</p>
+    </div>
+
+  </div>
+
+  <!-- ── RGPD ── -->
+  <div class="tab-content" id="rgpd">
+
+    <div class="legal-card">
+      <h2>Responsable du traitement</h2>
+      <p>Le responsable du traitement des données personnelles collectées via ce site est :</p>
+      <p><strong>DELAROQUE Fabien</strong> – La Boutique Regeco<br/>
+      46 rue de la Marne, 50000 Saint-Lô<br/>
+      Email : <a href="mailto:laboutique@regeco.fr" style="color: var(--text);">laboutique@regeco.fr</a></p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Données collectées</h2>
+      <p>Dans le cadre de l'utilisation du formulaire de contact, les données suivantes peuvent être collectées :</p>
+      <ul>
+        <li>Nom et prénom</li>
+        <li>Adresse email</li>
+        <li>Numéro de téléphone (optionnel)</li>
+        <li>Message et demande</li>
+      </ul>
+      <p>Ces données sont utilisées uniquement pour répondre à vos demandes et ne sont jamais revendues à des tiers.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Durée de conservation</h2>
+      <p>Les données collectées via le formulaire de contact sont conservées pendant une durée maximale de <strong>3 ans</strong> à compter du dernier contact, conformément aux recommandations de la CNIL.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Vos droits</h2>
+      <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants :</p>
+      <ul>
+        <li>Droit d'accès à vos données</li>
+        <li>Droit de rectification</li>
+        <li>Droit à l'effacement (droit à l'oubli)</li>
+        <li>Droit à la portabilité</li>
+        <li>Droit d'opposition au traitement</li>
+      </ul>
+      <p>Pour exercer ces droits, contactez-nous à : <strong><a href="mailto:laboutique@regeco.fr" style="color: var(--text);">laboutique@regeco.fr</a></strong></p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Cookies</h2>
+      <p>Ce site n'utilise pas de cookies de traçage ou publicitaires. Aucune donnée de navigation n'est collectée à des fins commerciales.</p>
+      <p class="update-date">Dernière mise à jour : Février 2025</p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo-img" href="PAGE.html">
+    <img src="LOGO.png" alt="La Boutique Regeco" style="height: 70px; width: auto;" />
+  </a>
+  <div class="footer-links">
+    <a href="PAGE.html#services">Services</a>
+    <a href="PAGE.html#about">À propos</a>
+    <a href="PAGE.html#contact">Contact</a>
+    <a href="LOCALISATION.html">Nous trouver</a>
+    <a href="MENTIONS.html">Mentions légales</a>
+  </div>
+  <span class="footer-copy">© 2025 La Boutique Regeco. Tous droits réservés.</span>
+</footer>
+
+<script src="SCRIPT.js"></script>
+</body>
+</html>

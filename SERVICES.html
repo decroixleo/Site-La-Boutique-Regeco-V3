@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="LOGO.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nos Services – La Boutique Regeco</title>
+  <link rel="stylesheet" href="STYLE.css"/>
+  <style>
+    /* ─── HERO PAGE SERVICES ─── */
+    .services-hero {
+      min-height: 40vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10rem 5% 4rem;
+    }
+    
+    .services-hero .section-title {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+    
+    .services-hero .hero-eyebrow {
+      animation: fadeUp 0.8s 0.1s forwards;
+    }
+    
+    .services-hero .section-desc {
+      max-width: 600px;
+      margin: 1rem auto 0;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+
+    /* ─── WRAPPER ─── */
+    .services-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5% 6rem;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* ─── SERVICE BLOCK ─── */
+    .service-block {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 255, 65, 0.12);
+      border-radius: 14px;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeUp 0.8s forwards;
+      transition: all 0.3s;
+    }
+    
+    .service-block:hover {
+      border-color: rgba(0, 255, 65, 0.35);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transform: translateY(-3px);
+    }
+    
+    .service-block:nth-child(1) { animation-delay: 0.4s; }
+    .service-block:nth-child(2) { animation-delay: 0.5s; }
+    .service-block:nth-child(3) { animation-delay: 0.6s; }
+    .service-block:nth-child(4) { animation-delay: 0.7s; }
+    .service-block:nth-child(5) { animation-delay: 0.8s; }
+    .service-block:nth-child(6) { animation-delay: 0.9s; }
+
+    .service-block-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem 2.5rem;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.08);
+      background: rgba(0, 255, 65, 0.02);
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s;
+    }
+    
+    .service-block-header:hover {
+      background: rgba(0, 255, 65, 0.04);
+    }
+    
+    .service-block-icon {
+      width: 65px;
+      height: 65px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.12), rgba(0, 184, 148, 0.08));
+      border: 1.5px solid rgba(0, 255, 65, 0.18);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      transition: transform 0.3s;
+    }
+    
+    .service-block:hover .service-block-icon {
+      transform: scale(1.05);
+    }
+    
+    .service-block-title {
+      flex: 1;
+    }
+    
+    .service-block-title h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.3rem;
+    }
+    
+    .service-block-title p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    
+    .service-toggle {
+      font-size: 1.4rem;
+      color: var(--cyan);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      font-weight: 300;
+    }
+    
+    .service-block.open .service-toggle {
+      transform: rotate(45deg);
+    }
+
+    .service-block-body {
+      display: none;
+      padding: 2.5rem;
+      gap: 1.2rem;
+      flex-direction: column;
+    }
+    
+    .service-block.open .service-block-body {
+      display: flex;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.3rem 1.5rem;
+      background: rgba(0, 255, 65, 0.02);
+      border: 1px solid rgba(0, 255, 65, 0.08);
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+    
+    .service-item:hover {
+      border-color: rgba(0, 255, 65, 0.25);
+      background: rgba(0, 255, 65, 0.05);
+      transform: translateX(5px);
+    }
+    
+    .service-item-dot {
+      width: 9px;
+      height: 9px;
+      flex-shrink: 0;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--cyan);
+      margin-top: 0.5rem;
+    }
+    
+    .service-item-content h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+    
+    .service-item-content p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── CTA BAS ─── */
+    .services-cta {
+      text-align: center;
+      padding: 3.5rem 2.5rem;
+      background: rgba(0, 255, 65, 0.03);
+      border: 1px solid rgba(0, 255, 65, 0.12);
+      border-radius: 14px;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.1s forwards;
+    }
+    
+    .services-cta h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .services-cta p {
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+    
+    @media (max-width: 768px) {
+      .service-block-header {
+        padding: 1.5rem 1.8rem;
+        gap: 1rem;
+      }
+      
+      .service-block-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+      }
+      
+      .service-block-body {
+        padding: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CANVAS GRID -->
+<canvas id="grid-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a class="logo-img" href="PAGE.html">
+    <img src="LOGO.png" alt="La Boutique Regeco" style="height: 70px; width: auto;" />
+  </a>
+  <ul>
+    <li><a href="SERVICES.html" style="color: var(--cyan);">Services</a></li>
+    <li><a href="PAGE.html#stats">Réparation</a></li>
+    <li><a href="PAGE.html#about">À propos</a></li>
+    <li><a href="LOCALISATION.html">Nous trouver</a></li>
+    <li><a class="nav-devis" href="DEVIS.html">Devis gratuit</a></li>
+    <li><a class="nav-cta" href="PAGE.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="services-hero">
+  <p class="hero-eyebrow">⚙️ Ce que nous proposons</p>
+  <h1 class="section-title">Nos <span style="color: var(--cyan);">Services</span></h1>
+  <p class="section-desc">Découvrez l'ensemble de nos prestations informatiques pour particuliers et professionnels.</p>
+</div>
+
+<!-- SERVICES -->
+<div class="services-wrapper">
+
+  <!-- 1. RÉPARATION -->
+  <div class="service-block open">
+    <div class="service-block-header" onclick="toggleService(this)">
+      <div class="service-block-icon">🔧</div>
+      <div class="service-block-title">
+        <h2>Réparation & Maintenance</h2>
+        <p>Diagnostic et remise en état de vos appareils</p>
+      </div>
+      <span class="service-toggle">+</span>
+    </div>
+    <div class="service-block-body">
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Réparation PC & Mac</h4>
+          <p>Remplacement de composants défaillants, réparation carte mère, écran, clavier, batterie et plus.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Réparation smartphones & tablettes</h4>
+          <p>Remplacement d'écran, batterie, connecteur de charge pour beaucoup de marques (Apple, Samsung, etc.).</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Diagnostic</h4>
+          <p>Analyse complète de votre appareil pour identifier rapidement la panne et vous proposer un devis sous en moyenne 24/48 heures.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Récupération de données</h4>
+          <p>Récupération de données sur disques durs endommagés HDD et SSD, récuperation sur votre support (possibilité de vous en vendres un).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. VENTE -->
+  <div class="service-block">
+    <div class="service-block-header" onclick="toggleService(this)">
+      <div class="service-block-icon">🖥️</div>
+      <div class="service-block-title">
+        <h2>Vente de Matériel</h2>
+        <p>Équipements neufs et reconditionnés</p>
+      </div>
+      <span class="service-toggle">+</span>
+    </div>
+    <div class="service-block-body">
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Ordinateurs fixes & portables</h4>
+          <p>Large sélection de PC fixes, portables et Mac, neufs ou reconditionnés selon votre utilisation (bureautique, gaming, ect) et selon votre budget.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Périphériques & accessoires</h4>
+          <p>Écrans, claviers, souris, imprimantes, disques durs, SSD, clés USB et bien plus.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Conseil personnalisé</h4>
+          <p>Nos techniciens vous guident pour choisir le matériel adapté à vos besoins et votre budget.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. RÉSEAU -->
+  <div class="service-block">
+    <div class="service-block-header" onclick="toggleService(this)">
+      <div class="service-block-icon">🌐</div>
+      <div class="service-block-title">
+        <h2>Réseau & Connectivité</h2>
+        <p>Installation et configuration réseau</p>
+      </div>
+      <span class="service-toggle">+</span>
+    </div>
+    <div class="service-block-body">
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Installation Wi-Fi ou USB</h4>
+          <p>Installation d'imprimantes en USB en magasin ou bien à domicile et en Wifi uniquement à domicile.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Amelioration de votre reseau Wifi</h4>
+          <p>Ventes d'équipement (CPL, routeurs, ect) qui ont pour but d'améliorer votre débit si vous êtes loin de votre box internet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CYBERSÉCURITÉ -->
+  <div class="service-block">
+    <div class="service-block-header" onclick="toggleService(this)">
+      <div class="service-block-icon">🛡️</div>
+      <div class="service-block-title">
+        <h2>Cybersécurité</h2>
+        <p>Protection de vos données et systèmes</p>
+      </div>
+      <span class="service-toggle">+</span>
+    </div>
+    <div class="service-block-body">
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Protection antivirus</h4>
+          <p>Installation et configuration de solutions antivirus et anti-malware.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Sauvegarde & backup</h4>
+          <p>Mise en place de sauvegardes automatiques locales et cloud pour protéger vos données.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. FORMATION -->
+  <div class="service-block">
+    <div class="service-block-header" onclick="toggleService(this)">
+      <div class="service-block-icon">🎓</div>
+      <div class="service-block-title">
+        <h2>Formation & Assistance</h2>
+        <p>Accompagnement et cours informatiques</p>
+      </div>
+      <span class="service-toggle">+</span>
+    </div>
+    <div class="service-block-body">
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Cours particuliers</h4>
+          <p>Initiation et perfectionnement en informatique pour tous niveaux, à votre rythme.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Intervention à domicile</h4>
+          <p>Nos techniciens se déplacent chez vous pour vous aider sur place à Saint-Lô à partir de 29 euros et alentours à partir de 49 euros (prix incluant uniquement le déplacement).</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item-dot"></div>
+        <div class="service-item-content">
+          <h4>Support à distance</h4>
+          <p>Assistance rapide par prise en main à distance via le logiciel TeamViewer (logiciel présent sur le bureau de l'ordinateur si acheté à la Boutique Regeco) pour résoudre vos problèmes sans déplacement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="services-cta">
+    <h3>Vous ne trouvez pas ce que vous cherchez ?</h3>
+    <p>Contactez-nous directement, nous étudions toutes les demandes.</p>
+    <a class="btn-primary" href="PAGE.html#contact">Nous contacter</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo-img" href="PAGE.html">
+    <img src="LOGO.png" alt="La Boutique Regeco" style="height: 70px; width: auto;" />
+  </a>
+  <div class="footer-links">
+    <a href="SERVICES.html">Services</a>
+    <a href="PAGE.html#about">À propos</a>
+    <a href="PAGE.html#contact">Contact</a>
+    <a href="LOCALISATION.html">Nous trouver</a>
+    <a href="MENTIONS.html">Mentions légales</a>
+  </div>
+  <span class="footer-copy">© 2025 La Boutique Regeco. Tous droits réservés.</span>
+</footer>
+
+<script src="SCRIPT.js"></script>
+<script>
+  function toggleService(header) {
+    const block = header.parentElement;
+    block.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
