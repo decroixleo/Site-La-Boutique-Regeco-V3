@@ -604,10 +604,9 @@ footer {
     overflow-x: hidden;
   }
 
-  /* Navigation défilable horizontalement sur mobile */
+  /* Configuration du menu haut pour mobile */
   nav {
     padding: 0.6rem 0.8rem !important;
-    gap: 0.5rem;
   }
 
   nav .logo-img img {
@@ -616,25 +615,26 @@ footer {
 
   nav ul {
     display: flex !important;
-    overflow-x: auto;
-    white-space: nowrap;
-    gap: 0.6rem !important;
-    padding-bottom: 0.2rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Masque la barre de scroll */
+    gap: 0.4rem !important;
+    align-items: center;
   }
 
-  nav ul::-webkit-scrollbar {
-    display: none;
+  /* Cacher les liens Réparation, À propos et Contact sur mobile portrait */
+  nav ul li:nth-child(2),
+  nav ul li:nth-child(3),
+  nav ul li:nth-child(6) {
+    display: none !important;
   }
 
+  /* Style des 3 liens conservés (Services, Nous trouver, Devis) */
   nav a {
-    font-size: 0.78rem !important;
+    font-size: 0.72rem !important;
   }
 
-  nav .nav-cta, nav .nav-devis {
-    padding: 0.4rem 0.8rem !important;
-    font-size: 0.78rem !important;
+  nav .nav-devis {
+    padding: 0.4rem 0.7rem !important;
+    font-size: 0.72rem !important;
+    border-radius: 5px;
   }
 
   /* Ajustements du Hero */
