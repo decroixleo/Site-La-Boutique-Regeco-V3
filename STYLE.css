@@ -709,11 +709,31 @@ footer {
   }
 }
 
+/* ─── SOLUTION 2 : TOUS LES BOUTONS VISIBLES SUR SMARTPHONE PORTRAIT ─── */
 @media (max-width: 480px) {
-  nav ul {
-    display: none;
+  nav {
+    padding: 0.6rem 0.4rem;
   }
-  
+
+  nav .logo-img img {
+    height: 35px !important;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  nav a {
+    font-size: 0.68rem;
+  }
+
+  nav .nav-cta, nav .nav-devis {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.68rem;
+    border-radius: 4px;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
